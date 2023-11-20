@@ -45,3 +45,26 @@ https://github.com/Cypri3n/La-Malle
 
 from random import randint
 import pygame
+
+#DEFINITION DES CONSTANTES
+
+
+
+#DEBUT DU PROGRAMME PRINCIPAL
+
+#ouvre le csv et le transforme en liste contenant des dicos
+characters_liste_de_dico = []
+
+with open("Characters.csv", mode='r', encoding='utf-8') as f:
+    lignes = f.readlines()
+    cles_de_ligne = lignes[0].strip()
+    keys = cles_de_ligne.split(";")
+    for line in lignes[1:]:
+        line = line.strip()
+        valeurs = line.split(';')
+        dico = {}
+        for i in range(len(keys)):
+            dico[keys[i]] = valeurs[i]
+        characters_liste_de_dico.append(dico)
+        for z in range (23):
+            dico.pop
