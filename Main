@@ -38,7 +38,6 @@ ADRESSE GITHUB:
 https://github.com/Cypri3n/La-Malle
 
 '''
-
 # coding: utf-8
 
 #import des modules
@@ -47,6 +46,10 @@ from random import randint
 import pygame
 
 #DEFINITION DES CONSTANTES
+def boutique_a():
+    repay = randint(1,1000)
+    
+    
 
 
 
