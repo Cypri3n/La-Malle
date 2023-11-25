@@ -84,7 +84,6 @@ Fonction qui demande à l'utilisateur quelle boutique il souhaite visiter, puis 
 '''
 def boutiques():
     liste_boutiques = ['Chez Fleury et Bott', 'Chez Madame Guipure', 'Chez Ollivander']
-    liste_boutiques = ['Chez Fleury et Bott', 'Chez Madame Guipure', 'Chez Ollivander']
     choix_boutiques = input("Dans quelle boutique souhaitez vous aller? ")
     if choix_boutiques == liste_boutiques[0]:
         fleury_et_bott()
