@@ -1,5 +1,3 @@
-# coding: utf-8
-
 '''
 HARRY POTTER SE FAIT LA MALLE
 
@@ -39,8 +37,7 @@ https://github.com/Cypri3n/La-Malle
 
 '''
 
-
-
+#coding: utf-8
 #import des modules
 
 from random import randint
@@ -59,21 +56,21 @@ def fleury_et_bott():
     prix_livre_trois = randint(75,250)
     cout = prix_livre_un + prix_livre_deux + prix_livre_trois
     print(f"Le prix total des livres est de {cout} euros, ( {prix_livre_un} + {prix_livre_deux} + {prix_livre_trois} )")
-    money_gave_by_harry = randint(cout,1000)
-    print(f"Harry donne {money_gave_by_harry} euros")
-    prix_repay = money_gave_by_harry - cout
-    print(f"Je dois te rembourser {prix_repay} euros")
+    money_given_by_harry = randint(cout,1000)
+    print(f"Harry donne {money_given_by_harry} euros")
+    prix_repay = money_given_by_harry - cout
+    print(f"Je dois vous rembourser {prix_repay} euros")
     
 
 
 
 def madame_guipure():
-    _
+    a = 1
     
 
 
 def ollivander():
-    _
+    a = 0
     
     
 
@@ -82,12 +79,14 @@ def ollivander():
 '''
 Fonction qui demande à l'utilisateur quelle boutique il souhaite visiter, puis affiche les fonctions de ces boutiques.'
 '''
+
+#Pas optimal mes gatés vu que la phrase est trop précise, mieux vaut avoir des valeurs pour chaque boutique et en plus ca marche pas 
 def boutiques():
     liste_boutiques = ['Chez Fleury et Bott', 'Chez Madame Guipure', 'Chez Ollivander']
     choix_boutiques = input("Dans quelle boutique souhaitez vous aller? ")
-    if choix_boutiques == liste_boutiques[0]:
-        fleury_et_bott()
-    elif choix_boutiques == liste_boutiques[1]:
+    if choix_boutiques.lower == liste_boutiques[0]:
+        print(fleury_et_bott())
+    elif choix_boutiques.lower == liste_boutiques[1]:
         madame_guipure()
     else:
         ollivander()
