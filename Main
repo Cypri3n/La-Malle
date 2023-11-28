@@ -65,21 +65,40 @@ def fleury_et_bott():
 
 
 def madame_guipure():
+    #cout de la robe noire 
     prix = randint(800, 1000)
     prix_reduit = randint(8, 800)
+
+    #caisse du vendeur
+    billet_200 = 1
+    billet_100 = 3
+    billet_50 = 1     
+    billet_20 = 1
+    billet_10 = 1
+    piece_2 = 5
+
+    #monnaie à rendre
+    a_rendre200 = 0
+    a_rendre100 = 0
+    a_rendre50 = 0
+    a_rendre20 = 0
+    a_rendre10 = 0
+    a_rendre2 = 0
+
     reponse = input(f"Bonjour l'ami Potter, la robe noire est en promotion à {prix_reduit} au lieu de {prix}, souhaitez vous l'acheter ? \n 
                     C'est une offre somptueuse Akhy, je me serais moi même laissée tenter par ce prix d'ami")
-    if reponse == 'oui':
-        #cout de la robe noire
-        prix = randint(8, 800)
-        #caisse du vendeur
-        billet_200 = 1
-        billet_100 = 3
-        billet_50 = 1     
-        billet_20 = 1
-        billet_10 = 1
-        piece_2 = 5
+    
+    if reponse == 'oui':               
         print(f'Splendide ! Vous me devez {prix} euros jeune sorcier')
+        while prix > billet_200 and billet_200 is not 0 :
+            a_rendre200 += 1
+            prix -= 200
+        while 100 < prix < 200 and billet_100 is not 0 :
+            a_rendre += 100
+            prix -= 100
+        
+        
+        a_rendre = 0
 
 
     else:
