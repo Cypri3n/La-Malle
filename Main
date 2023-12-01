@@ -75,6 +75,7 @@ def madame_guipure():
     billet_50 = 1     
     billet_20 = 1
     billet_10 = 1
+    billet_5 = 1
     piece_2 = 5
 
     #monnaie à rendre
@@ -83,27 +84,36 @@ def madame_guipure():
     a_rendre50 = 0
     a_rendre20 = 0
     a_rendre10 = 0
+    a_rendre5 = 0
     a_rendre2 = 0
 
-    reponse = input(f"Bonjour l'ami Potter, la robe noire est en promotion à {prix_reduit} au lieu de {prix}, souhaitez vous l'acheter ? \n 
-                    C'est une offre somptueuse Akhy, je me serais moi même laissée tenter par ce prix d'ami")
+    reponse = input(f"Bonjour l'ami Potter, la robe noire est en promotion à {prix_reduit} au lieu de {prix}, souhaitez vous l'acheter ?")
     
     if reponse == 'oui':               
-        print(f'Splendide ! Vous me devez {prix} euros jeune sorcier')
-        while prix > billet_200 and billet_200 is not 0 :
+        print(f'Splendide ! Vous me devez {prix_reduit} euros jeune sorcier')
+        while prix > billet_200 and billet_200 != 0 :
             a_rendre200 += 1
             prix -= 200
-        while 100 < prix < 200 and billet_100 is not 0 :
-            a_rendre += 100
+        while 100 < prix < 200 and billet_100 != 0 :
+            a_rendre100 += 1
             prix -= 100
-        
-        
-        a_rendre = 0
+        while 50 < prix < 100 and billet_50 != 0:
+            a_rendre50 += 1
+            prix -= 50
+        while 20 < prix < 50 and billet_20 != 0:
+            a_rendre20 += 1
+            prix -= 20
+        while 10 < prix < 20 and billet_10 != 0:
+            a_rendre10 += 1
+            prix -= 10
+        while 5 < prix < 10 and billet_5 != 0:
+            a_rendre5 += 1
+            prix -= 5
+        while 2 < prix < 5 and billet_2 != 0:
+            a_rendre2 += 1
+            prix -= 2
+    print(f"Je te dois {a_rendre200} billets de 200 euros, {a_rendre100} billets de 100 euros, {a_rendre50} billets de 50 euros, {a_rendre20} billets de 20 euros, {a_rendre10} billets de 10 euros, {a_rendre5} billets de 5 euros, et finalement {a_rendre2} pièces de 2 euros.")
 
-
-    else:
-        print('Bonne journée Akhy')
-        boutiques()
 
     
 
@@ -123,9 +133,9 @@ Fonction qui demande à l'utilisateur quelle boutique il souhaite visiter, puis 
 def boutiques():
     liste_boutiques = ['Chez Fleury et Bott', 'Chez Madame Guipure', 'Chez Ollivander']
     choix_boutiques = input("Dans quelle boutique souhaitez vous aller? ")
-    if choix_boutiques.lower == liste_boutiques[0]:
+    if choix_boutiques == liste_boutiques[0]:
         print(fleury_et_bott())
-    elif choix_boutiques.lower == liste_boutiques[1]:
+    elif choix_boutiques == liste_boutiques[1]:
         madame_guipure()
     else:
         ollivander()
