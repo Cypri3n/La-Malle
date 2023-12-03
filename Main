@@ -51,12 +51,12 @@ Fonction qui rembourse Harry lors de ses achats des livres.
 '''
 def fleury_et_bott():
     cout = 0
-    prix_livre_un = randint (10,150)
-    prix_livre_deux = randint(50,200)
-    prix_livre_trois = randint(75,250)
+    prix_livre_un = randint (10, 150)
+    prix_livre_deux = randint(50, 200)
+    prix_livre_trois = randint(75, 250)
     cout = prix_livre_un + prix_livre_deux + prix_livre_trois
     print(f"Le prix total des livres est de {cout} euros, ( {prix_livre_un} + {prix_livre_deux} + {prix_livre_trois} )")
-    money_given_by_harry = randint(cout,1000)
+    money_given_by_harry = randint(cout, 1000)
     print(f"Harry donne {money_given_by_harry} euros")
     prix_repay = money_given_by_harry - cout
     print(f"Je dois vous rembourser {prix_repay} euros")
