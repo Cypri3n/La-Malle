@@ -119,7 +119,12 @@ def madame_guipure():
 
 
 def ollivander():
-    a = 0
+    noises = randint(0, 1000)
+    mornilles = randint(0,700)
+    gallions = randint(0, 15)
+    print(f'La baguette de sureau t'as choisi Akhy, c'est génial, d'atant plus que tu me dois {gallions} gallions, {mornilles} mornilles ainsi que {noises} petites noises')
+
+    
     
     
 
