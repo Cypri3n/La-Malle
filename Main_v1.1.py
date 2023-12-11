@@ -31,7 +31,7 @@ from random import randint
 Fonction qui rembourse Harry lors de ses achats des livres.
 '''
 def fleury_et_bott():
-    print()
+   
     print("Bienvenu chez Fleury et Bott !")
     cout = 0
     prix_livre_un = randint (10,150)
@@ -64,25 +64,9 @@ def fleury_et_bott():
 
 
 
-def madame_guipure():
-    print()
-    print("Bienvenu chez Madame Guipure !")
-    #cout de la robe noire 
-    prix = randint(800, 1000)
-    prix_reduit = randint(8, 800)
-    reponse = input(f"Bonjour l'ami Potter, la robe noire est en promotion à {prix_reduit} euros au lieu de {prix} euros, souhaitez vous l'acheter ?")
-    if reponse == 'oui':               
-        print(f'Splendide ! Vous me devez {prix_reduit} euros jeune sorcier')
-    dico_billets = { 500: 0, 200: 0, 100: 0, 50: 0, 20: 0, 10: 0, 5: 0, 2: 0 }
-    dico_billets_a_rendre = {
-    200: 1,
-    100: 3,
-    50: 1,
-    20: 1,
-    10: 1,
-    5: 1,
-    2: 5,
-    }
+c
+                
+            
 
 
 
@@ -93,13 +77,18 @@ def ollivander():
 
 
 
+#   PARTIE 2 : Interface homme machine 
 
-'''
-Fonction qui demande à l'utilisateur quelle boutique il souhaite visiter, puis affiche les fonctions de ces boutiques.'
-'''
 
 #Pas optimal mes gatés vu que la phrase est trop précise, mieux vaut avoir des valeurs pour chaque boutique et en plus ca marche pas 
 def boutiques():
+    '''
+    Fonction qui demande à l'utilisateur quelle boutique il souhaite visiter, puis affiche les fonctions de ces boutiques.'
+    Entrées : Le nom de la boutique sous forme de chaine de caractères
+              
+    Sorties : Redirige le joueur vers une autre fonction
+              Renvoie le résultat lié a cette dernière (documentés separemment)  
+    '''
     liste_boutiques = ['Chez Fleury et Bott', 'chez fleury et bott', 'Chez Madame Guipure', 'chez madame guipure', 'Chez Ollivander']
     print(liste_boutiques[2])
     choix_boutiques = input("Dans quelle boutique souhaitez vous aller? ")
