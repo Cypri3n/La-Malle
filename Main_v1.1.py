@@ -26,7 +26,6 @@ from random import randint
 
 
 
-
 def fleury_et_bott(a_rendre):
     '''
     Fonction permettant de rendre la monnaie à Harry avec le moins de billets
@@ -60,8 +59,29 @@ def fleury_et_bott(a_rendre):
 
 
 
-                
+
+def madame_guipure(a_rendre):
+    caisse = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
+    rendu_monnaie_1 = {}
+
+    print(f"Bonjour Harry, je vous dois {a_rendre} euros.")
+
+    for coupure in caisse:
+        if coupure <= a_rendre and caisse[coupure] > 0:
+            nb_coupures = min(a_rendre // coupure, caisse[coupure])
+            rendu_monnaie_1[coupure] = nb_coupures
+            a_rendre -= nb_coupures * coupure
+            caisse[coupure] -= nb_coupures
             
+    if a_rendre > 0:
+        print("Je ne peux pas vous remboursez totalement, mais je vous verse le contenu de ma caisse.")
+        rendu_monnaie_2 = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
+    else:
+        print("Je peux donc vous rendre la monnaie.")
+        rendu_monnaie_2 = rendu_monnaie_1
+    
+    
+    return rendu_monnaie_2            
 
 
 
