@@ -27,41 +27,36 @@ from random import randint
 
 
 
-'''
-Fonction qui rembourse Harry lors de ses achats des livres.
-'''
-def fleury_et_bott():
-   
-    print("Bienvenu chez Fleury et Bott !")
-    cout = 0
-    prix_livre_un = randint (10,150)
-    prix_livre_deux = randint(50,200)
-    prix_livre_trois = randint(75,250)
-    cout = prix_livre_un + prix_livre_deux + prix_livre_trois
-    print(f"Le prix total des livres est de {cout} euros, ( {prix_livre_un} + {prix_livre_deux} + {prix_livre_trois} )")
-    money_given_by_harry = randint(cout,1000)
-    print(f"Harry donne {money_given_by_harry} euros")
-    prix_repay = money_given_by_harry - cout
-    print(f"Je dois vous rembourser {prix_repay} euros")
+def fleury_et_bott(a_rendre):
+    '''
+    Fonction permettant de rendre la monnaie à Harry avec le moins de billets
+    possibles en sachant que la caisse du libraire est infini.
 
-    liste_billets = [1, 2, 5, 10, 20, 50, 100, 200, 500]
-    # liste des pièces à rendre
-    lst_pieces = []
-    # indice de la première pièce comparer à la somme à rendre
-    i = len(systeme_monnaie) - 1
-    # somme à rendre
-    somme_a_rendre = 87
-    # boucle de construction de la liste des pièces
-    while somme_a_rendre > 0:
-        valeur = systeme_monnaie[i]
-        if somme_a_rendre < valeur:
-            i -= 1
-        else:
-            lst_pieces.append(valeur)
-            somme_a_rendre -= valeur
-
-
-
+    Entrée : entier correspondant à la somme à rendre par le libraire.
+    
+    Sortie : dictionnaire correspondant au nombre de billets rendus
+    '''
+    
+    dico_billets = {500 : 0,
+                    200 : 0,
+                    100 : 0,
+                    50 : 0,
+                    20 : 0,
+                    10 : 0,
+                    5 : 0,
+                    2 : 0,
+                    1 : 0}
+    
+    print(f"Bonjour Harry, je vous dois {a_rendre} euros.")
+    
+    
+    for billet in dico_billets:
+        if a_rendre >= billet:
+            nb_billets = a_rendre // billet
+            dico_billets[billet] = nb_billets
+            a_rendre -= nb_billets * billet
+            
+    return dico_billets
 
 
 
