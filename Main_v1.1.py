@@ -87,12 +87,15 @@ def madame_guipure(a_rendre):
 
 
 def ollivander():
-    noises = randint(0, 1000)
-    mornilles = randint(0,700)
-    gallions = randint(0, 15)
-    monnaie_Akhy = 5*17*29
-    print(f'La baguette de sureau t'as choisi Akhy, c'est génial, d'atant plus que tu me dois {gallions} gallions, {mornilles} mornilles ainsi que {noises} petites noises')
-    a_rendre = monnaie_Akhy - gallions
+    noises = 451
+    mornilles = 531
+    gallions = 7
+    # convertions
+    prix = (mornilles * 29) + (gallions * 17 * 29) + noises
+    monnaie_Akhy = 5 * 17 * 29
+    print(f"La baguette de sureau t'as choisi Akhy, c'est génial, d'atant plus que tu me dois {gallions} gallions,
+        {mornilles} mornilles ainsi que {noises} petites noises, ce qui fait {prix} noises très exactement')
+    a_rendre = monnaie_Akhy - prix
 
 
 
