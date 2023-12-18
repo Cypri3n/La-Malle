@@ -12,8 +12,8 @@ ollivander(3)
   
     
     
-un_gallion = 493
-une_mornille = 29
-une_noise = 1
-baguette = 1151
+#un gallino = 493
+#une mornille = 29
+#une noise = 1
+#prix baguette = 1151
     
