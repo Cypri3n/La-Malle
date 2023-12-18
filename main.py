@@ -126,3 +126,27 @@ def boutiques():
         ollivander()
 
 boutiques()
+
+
+
+#  DEBUT CODE PYGAME
+
+import pygame
+
+pygame.init()
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 800
+screen = pygame.display.set_mode((SCREEN_WDITH, SCREEEN_HEIGHT))
+pygame.display.set_caption("Akhy se fait la malle")
+
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, Ttrue, text_col)
+    screen.blit(img, (x, y))
+run = True
+while run:
+    screen.fill((52, 78, 91))
+
+for event in pygame.get():
+    if event.type == pygame.QUIT:
+        run = False
+pygame.display.update()
