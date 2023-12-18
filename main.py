@@ -34,6 +34,18 @@ def fleury_et_bott(a_rendre):
     Entrée : entier correspondant à la somme à rendre par le libraire.
     
     Sortie : dictionnaire correspondant au nombre de billets rendus
+
+    DOCTEST:
+    >>> fleury_et_bott(0)
+    
+    >>> fleury_et_bott(60)
+  
+    >>> fleury_et_bott(63)
+ 
+    >>> fleury_et_bott(231)
+     
+    >>> fleury_et_bott(899)
+    
     '''
     
     dico_billets = {500 : 0,
@@ -61,6 +73,27 @@ def fleury_et_bott(a_rendre):
 
 
 def madame_guipure(a_rendre):
+    '''
+    Fonction permettant de rendre la monnaie à Harry avec le moins de billets
+    possibles en sachant que la caisse du libraire est infini.
+
+    Entrée : entier correspondant à la somme à rendre par le libraire.
+    
+    Sortie : dictionnaire correspondant au nombre de billets rendus
+    
+        DOCTEST:
+    >>> madame_guipure(0)
+    
+    >>> madame_guipure(17)
+  
+    >>> madame_guipure(68)
+ 
+    >>> madame_guipure(231)
+     
+    >>> madame_guipure(497)
+
+    >>> madame_guipure(842)
+    '''
     caisse = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
     rendu_monnaie_1 = {}
 
@@ -138,6 +171,8 @@ SCREEN_WIDTH = 1200
 SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WDITH, SCREEEN_HEIGHT))
 pygame.display.set_caption("Akhy se fait la malle")
+pygame.font.SysFont("arialblack", 40)
+TEXT.COL = (255, 255, 255)
 
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, Ttrue, text_col)
@@ -145,8 +180,11 @@ def draw_text(text, font, text_col, x, y):
 run = True
 while run:
     screen.fill((52, 78, 91))
+    draw_text("Appuyer sur ENTREE pour commencer")
 
-for event in pygame.get():
-    if event.type == pygame.QUIT:
-        run = False
-pygame.display.update()
+    for event in pygame.get():
+        if event.type == pygame.QUIT:
+            run = False
+    pygame.display.update()
+pygame.quit()
+
