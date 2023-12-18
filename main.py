@@ -75,7 +75,7 @@ def fleury_et_bott(a_rendre):
 def madame_guipure(a_rendre):
     '''
     Fonction permettant de rendre la monnaie à Harry avec le moins de billets
-    possibles en sachant que la caisse du libraire est infini.
+    possibles en sachant que la caisse du libraire est finie.
 
     Entrée : entier correspondant à la somme à rendre par le libraire.
     
@@ -120,6 +120,27 @@ def madame_guipure(a_rendre):
 
 
 def ollivander():
+    '''
+    Fonction permettant de rendre la monnaie à Harry avec le moins de billets
+    possibles en sachant que la caisse du libraire est finie et de convetir des monnaies de differentes devises.
+
+    Entrée : entier correspondant à la somme à rendre par le libraire.
+    
+    Sortie : dictionnaire correspondant au nombre de billets rendus
+    
+        DOCTEST:
+    >>> madame_guipure(0)
+    
+    >>> madame_guipure(17)
+  
+    >>> madame_guipure(68)
+ 
+    >>> madame_guipure(231)
+     
+    >>> madame_guipure(497)
+
+    >>> madame_guipure(842)
+    '''
     noises = 451
     mornilles = 531
     gallions = 7
