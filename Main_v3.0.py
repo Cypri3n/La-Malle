@@ -97,26 +97,41 @@ def madame_guipure(a_rendre_madame_guipure):
     >>> madame_guipure(842)
     '''
     caisse = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
-    rendu_monnaie_1 = {}
+    rendu_monnaie = {}
 
     print(f"Bonjour Harry, je vous dois {a_rendre_madame_guipure} euros.")
 
     for coupure in caisse:
         if coupure <= a_rendre_madame_guipure and caisse[coupure] > 0:
             nb_coupures = min(a_rendre_madame_guipure // coupure, caisse[coupure])
-            rendu_monnaie_1[coupure] = nb_coupures
+            rendu_monnaie[coupure] = nb_coupures
             a_rendre_madame_guipure -= nb_coupures * coupure
             caisse[coupure] -= nb_coupures
-            
+
+        if a_rendre_madame_guipure > 0:
+            if all(value == 0 for value in caisse.values()):
+                rendu_monnaie = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
+            else:
+                '''
+                while a_rendre_madame_guipure > 0:
+                    if caisse[coupure] > 0:
+                        if a_rendre_madame_guipure % caisse[coupure] == 1:
+                            nb_coupures = min(a_rendre // coupure, caisse[coupure])
+                            rendu_monnaie[coupure] = nb_coupures
+                            a_rendre_madame_guipure -= nb_coupures * coupure
+                            caisse[coupure] -= nb_coupures
+                        else:
+                '''
+
     if a_rendre_madame_guipure > 0:
-        print("Je ne peux pas vous remboursez totalement, mais je vous verse le contenu de ma caisse.")
-        rendu_monnaie_2 = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
+        if rendu_monnaie == {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}:
+            print("Je ne peux pas vous rembourser totalement, mais je vous verse le contenu de ma caisse.")
+        else:
+            print("Désolé, je ne peux pas te rendre correctement la monnaie, je te donne donc un peu plus")
     else:
         print("Je peux donc vous rendre la monnaie.")
-        rendu_monnaie_2 = rendu_monnaie_1
-    
-    
-    return rendu_monnaie_2            
+              
+    return rendu_monnaie           
 
 
 
