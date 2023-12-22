@@ -153,7 +153,8 @@ def madame_guipure(a_rendre_madame_guipure):
             SI coupure <= a_rendre_madame_guipure ET valeur de caisse > 0
                 nb_coupures ← Le minimum entre le reste de la division euclidienne de a_rendre_fleury_et_bott par billet et de a_rendre_fleury_et_bott par la valeur de caisse
                 valeur de rendu_monnaie_1 ← nb_billets
-                a_rendre_fleury_et_bott ← a_rendre_fleury_et_bott - nb_billets * billet
+                a_rendre_madame_guipure ← a_rendre_madame_guipure - nb_coupures * coupure
+                valeur de caisse ← valeur de caisse - nb_coupures
             FIN_SI
         FIN_POUR
     FIN
@@ -210,6 +211,35 @@ def ollivander(a_rendre_gallions, a_rendre_mornilles, a_rendre_noises):
     >>> madame_guipure(497)
 
     >>> madame_guipure(842)
+    PSEUDO-CODE:
+
+    VARIABLES
+        dico_billets : dictionnaire ayant comme clés les billets (entiers) et comme valeurs 0
+        a_rendre_gallions : entier
+        a_rendre_mornilles : entier
+        a_rendre_noises : entier
+        i : entier
+
+    DEBUT:
+        dico_billets[493] ← a_rendre_gallions
+        dico_billets[29] ← a_rendre_mornilles
+        dico_billets[1] ← a_rendre_noises
+        
+        SI a_rendre_gallions <= 0 ET a_rendre_mornilles <= 0 ET a_rendre_noises <= 0
+            Rien à rembourser
+        SINON
+            POUR i dans dico_billets
+                TANT_QUE dico_billets[1] >= 29
+                    dico_billets[29] ← dico_billets[29] + 1
+                    dico_billets[1] ← dico_billets[1] + 29
+                FIN_TANT_QUE
+                TANT_QUE dico_billets[29] >= 17
+                    dico_billets[493] ← dico_billets[493] + 1
+                    dico_billets[29] ← dico_billets[29] + 17
+                FIN_TANT_QUE
+            FIN_POUR
+        FIN_SI
+    FIN
     '''
     
     
