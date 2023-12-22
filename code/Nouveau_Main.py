@@ -6,15 +6,15 @@ REGLES:
 CLASSEMENT ET CSV:
 Les données tirés de l'univers d'Harry Potter sont importés du fichier CSV
 BONUS:
-Le jeu possède également une interface graphique dont le code commence à la ligne.....
+
 AUTEURS:
 Eliot CAIMARI LAUNAY, Arthur CHARUEL, Cyprien VENARD 
 LICENCE:
 Aucune
 VERSION:
-2.1
+Finale, après 73 commits quand même
 DATE DE DERNIERE REVISION:
-20/12/2023
+22/12/2023
 ADRESSE GITHUB: 
 https://github.com/Cypri3n/La-Malle
 '''
