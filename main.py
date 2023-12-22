@@ -183,7 +183,32 @@ boutiques()
 
 
 
-#  DEBUT CODE PYGAME
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#  DEBUT CODE PYGAME 
 
 import pygame
 
