@@ -33,16 +33,29 @@ def rendre_monnaie_fleury_et_bott(a_rendre_fleury_et_bott):
     Sortie : dictionnaire correspondant au nombre de billets rendus
 
     DOCTEST:
-    >>> rendre_monnaie_fleury_et_bott(0)
-        
-    >>> rendre_monnaie_fleury_et_bott(60)
-  
-    >>> rendre_monnaie_fleury_et_bott(63)
- 
-    >>> rendre_monnaie_fleury_et_bott(231)
-     
-    >>> rendre_monnaie_fleury_et_bott(899)
-    
+    >>> fleury_et_bott(0)
+    Je suis navré, mais je ne peux pas vous rembourser une somme inéxistante
+    >>> fleury_et_bott(60)
+    Je vous dois 1 billet(s) de 50
+    Je vous dois 1 billet(s) de 10
+    >>> fleury_et_bott(63)
+    Je vous dois 1 billet(s) de 50
+    Je vous dois 1 billet(s) de 10
+    Je vous dois 1 billet(s) de 2
+    Je vous dois 1 billet(s) de 1
+    >>> fleury_et_bott(231)
+    Je vous dois 1 billet(s) de 200
+    Je vous dois 1 billet(s) de 20
+    Je vous dois 1 billet(s) de 10
+    Je vous dois 1 billet(s) de 1
+    >>> fleury_et_bott(899)
+    Je vous dois 1 billet(s) de 500
+    Je vous dois 1 billet(s) de 200
+    Je vous dois 1 billet(s) de 100
+    Je vous dois 1 billet(s) de 50
+    Je vous dois 2 billet(s) de 20
+    Je vous dois 1 billet(s) de 5
+    Je vous dois 2 billet(s) de 2
     '''
     
     dico_billets = {500: 0,
@@ -241,5 +254,44 @@ def boutiques():
                     choix_somme_a_rendre = int(input("Quelle somme souhaitez-vous tester ? "))
                     rendre_monnaie_m
 
+        else:
+            choix_somme_rendre = int(input("Souhaitez vous essayer les sommes à rendre du magasin en tappant 1, ou essayer vos propres sommes en tappant 2 : "))
+            print()
+            if choix_somme_rendre == 1:
+                for valeur in liste_valeurs_ollivander:
+                    ollivander(valeur[0], valeur[1], valeur[2])
+            else:
+                a_rendre_galions = int(input("Bonjour et bienvenu chez Ollivander, combien de Galions dois-je te rendre ? "))
+                a_rendre_mornilles = int(input("Maintenant, combien de Mornilles te dois-je ? "))
+                a_rendre_noises = int(input("Finallement, combien de petite Noises te faut-il ? "))
+                ollivander(a_rendre_galions, a_rendre_mornilles, a_rendre_noises)
+            choix_rester = int(input("Veuillez entrer 1 pour rester ou 2 pour retourner au chemin de traverse : "))
+            if choix_rester == 1:
+                #boucle TANT QUE permettant de revenir au chemin de traverse ou de rester dans al boutique à l'infini
+                while choix_rester == 1:
+                    print()
+                    choix_somme_rendre = int(input("Souhaitez vous essayer les sommes à rendre du magasin en tappant 1, ou essayer vos propres sommes en tappant 2 : "))
+                    print()
+                    if choix_somme_rendre == 1:
+                        for valeur in liste_valeurs_ollivander:
+                            ollivander(valeur[0], valeur[1], valeur[2])
+                        print()
+                        print("Souhaitez vous maintenant rester dans notre boutique ou retourner au chemin de traverse")
+                        choix_rester = int(input("Saisissez 1 pour rester ou 2 pour retourner au chemin de traverse : "))
+                    else:
+                        a_rendre_gallions = int(input("Combien de Gallions te dois-je ? "))
+                        a_rendre_mornilles = int(input("Combien de Mornilles dois-je te rembourser ? "))
+                        a_rendre_noises = int(input("Finallement, combien de Noises te manque t-il ? "))
+                        ollivander(a_rendre_gallions, a_rendre_mornilles, a_rendre_noises)
+                        print()
+                        print("Souhaitez vous maintenant rester dans notre boutique ou retourner au chemin de traverse")
+                        choix_rester = int(input("Saisissez 1 pour rester ou 2 pour retourner au chemin de traverse : "))
+            else:
+                boutiques()
+
+    #sortie et arrêt du programme
+    else:
+        print("Au revoir Harry !")
+boutiques()
 
     
