@@ -43,7 +43,7 @@ def main_menu():
                              text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
         OPTIONS_BUTTON = Button(image=pygame.image.load("images/settingsbleu.png"), pos=(640, 400),
                                 text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("La-Malle-main/images/logout_1828427.png"), pos=(640, 550),
+        QUIT_BUTTON = Button(image=pygame.image.load("images/logout_1828490.png"), pos=(640, 550),
                              text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
@@ -68,6 +68,54 @@ def main_menu():
                     sys.exit()
 
         pygame.display.update()
+pygame.init()
+
+SCREEN_WIDTH = 1200
+SCREEN_HEIGHT = 800
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Akhy se fait la malle")
+TEXT_COLOR = (255, 255, 255)
+
+def get_font(size):
+    return pygame.font.Font("police/Roboto-Black.ttf", size)
+
+class Button():
+    def __init__(self, image, pos, text_input, font, base_color, hovering_color):
+        self.original_image = image
+        self.x_pos, self.y_pos = pos
+        self.font = font
+        self.base_color, self.hovering_color = base_color, hovering_color
+        self.text_input = text_input
+        self.text = self.font.render(self.text_input, True, self.base_color)
+        if self.original_image is None:
+            self.image = self.text
+        else:
+            button_size = (200, 80)  # Set the desired button size (width, height)
+            self.image = self.resize_image(self.original_image, button_size)
+        self.rect = self.image.get_rect(center=(self.x_pos, self.y_pos))
+        self.text_rect = self.text.get_rect(center=(self.x_pos, self.y_pos))
+
+    def resize_image(self, image, size):
+        # Resize the image while preserving the aspect ratio
+        aspect_ratio = image.get_width() / image.get_height()
+        new_width = int(size[1] * aspect_ratio)
+        return pygame.transform.scale(image, (new_width, size[1]))
+
+    def update(self, screen):
+        screen.blit(self.image, self.rect.topleft)
+        if self.original_image is None:
+            screen.blit(self.text, self.text_rect)
+
+    def checkForInput(self, position):
+        if self.rect.collidepoint(position):
+            return True
+        return False
+
+    def changeColor(self, position):
+        if self.rect.collidepoint(position):
+            self.text = self.font.render(self.text_input, True, self.hovering_color)
+        else:
+            self.text = self.font.render(self.text_input, True, self.base_color)
 
 
 
@@ -244,7 +292,7 @@ def boutiques():
         print("Dans quelle boutique souhaitez vous aller ?")
         choix_boutiques = int(input("Saisissez 1 pour aller chez Fleury et Bott, 2 pour aller Cherz Madame Guipure, et 3 pour aller chez Ollivander : "))
 
-        assert choix_boutiques in {1, 3}, "Veuillez entrer 1 ou 2 pour effectuer une action"
+        assert choix_boutiques not in {1, 3}, "Veuillez entrer 1 ou 2 pour effectuer une action"
 
         if choix_boutiques == 1:
             main_menu()
