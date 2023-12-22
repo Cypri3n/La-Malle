@@ -43,6 +43,25 @@ def fleury_et_bott(a_rendre_fleury_et_bott):
      
     >>> fleury_et_bott(899)
     
+    PSEUDO-CODE:
+
+    VARIABLES
+        a_rendre_fleury_et_bott : entier à rendre
+        dico_billets : dictionnaire ayant comme clés les billets (entiers) et comme valeurs 0
+        billet : nombre entier
+        nb_billet : nombre entier
+        j : nombre entier
+
+    DEBUT
+        POUR billet dans dico_billets
+            SI a_rendre_fleury_et_bott >= billet
+                nb_billets ← Reste de la division euclidienne de a_rendre_fleury_et_bott par billet
+                valeur de dico_billets ← nb_billets
+                a_rendre_fleury_et_bott ← a_rendre_fleury_et_bott - nb_billets * billet
+            FIN_SI
+        FIN_POUR
+    FIN
+    
     '''
     
     dico_billets = {500 : 0,
@@ -104,6 +123,27 @@ def madame_guipure(a_rendre_madame_guipure):
     >>> madame_guipure(497)
 
     >>> madame_guipure(842)
+    
+    PSEUDO-CODE:
+
+    VARIABLES
+        a_rendre_madame_guipure : entier à rendre
+        caisse : dictionnaire ayant comme clés les billets (entiers) et comme valeurs un entier
+        rendu_monnaie_1 : dictionnaire vide
+        coupure : nombre entier
+        nb_coupures : nombre entier
+        j : nombre entier
+
+    DEBUT
+        POUR coupure dans caisse
+            SI coupure <= a_rendre_madame_guipure ET valeur de caisse > 0
+                nb_coupures ← Le minimum entre le reste de la division euclidienne de a_rendre_fleury_et_bott par billet et de a_rendre_fleury_et_bott par la valeur de caisse
+                valeur de rendu_monnaie_1 ← nb_billets
+                a_rendre_fleury_et_bott ← a_rendre_fleury_et_bott - nb_billets * billet
+            FIN_SI
+        FIN_POUR
+    FIN
+    
     '''
 
     caisse = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
