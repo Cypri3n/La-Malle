@@ -20,7 +20,54 @@ https://github.com/Cypri3n/La-Malle
 '''
 
 #import des modules
+import pygame
+import sys
 
+def main_menu():
+    current_background = pygame.image.load("images/main.png")
+
+    while True:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+
+        SCREEN.blit(current_background, (0, 0))
+
+        MENU_MOUSE_POS = pygame.mouse.get_pos()
+
+        MENU_TEXT = get_font(100).render("MAIN MENU", True, "#b68f40")
+        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
+
+        PLAY_BUTTON = Button(image=pygame.image.load("images/jouer.png"), pos=(640, 250),
+                             text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+        OPTIONS_BUTTON = Button(image=pygame.image.load("images/settingsbleu.png"), pos=(640, 400),
+                                text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+        QUIT_BUTTON = Button(image=pygame.image.load("La-Malle-main/images/logout_1828427.png"), pos=(640, 550),
+                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
+
+        SCREEN.blit(MENU_TEXT, MENU_RECT)
+
+        for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
+            button.changeColor(MENU_MOUSE_POS)
+            button.update(SCREEN)
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    current_background = pygame.image.load("path/to/play/background.jpg")
+                    play()
+                elif OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    current_background = pygame.image.load("path/to/options/background.jpg")
+                    options()
+                elif QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
+                    pygame.quit()
+                    sys.exit()
+
+        pygame.display.update()
 
 
 
@@ -55,6 +102,7 @@ def fleury_et_bott(a_rendre_fleury_et_bott):
                     5 : 0,
                     2 : 0,
                     1 : 0}
+    
     
     if a_rendre_fleury_et_bott <= 0:
         print("Je suis navré, mais je ne peux pas vous rembourser une somme inéxistante")
@@ -196,9 +244,10 @@ def boutiques():
         print("Dans quelle boutique souhaitez vous aller ?")
         choix_boutiques = int(input("Saisissez 1 pour aller chez Fleury et Bott, 2 pour aller Cherz Madame Guipure, et 3 pour aller chez Ollivander : "))
 
-        assert choix_boutiques == 1 or choix_boutiques == 2 or choix_boutiques == 3, "Veuillez entrer 1 ou 2 pour effectuer une action"
+        assert choix_boutiques in {1, 3}, "Veuillez entrer 1 ou 2 pour effectuer une action"
 
         if choix_boutiques == 1:
+            main_menu()
             choix_somme_rendre = int(input("Souhaitez vous essayer les sommes à rendre du magasin en tappant 1, ou essayer vos propres sommes en tappant 2 : "))
             if choix_somme_rendre == 1:
                 for valeur in liste_valeurs_fleury_et_bott:
@@ -225,6 +274,7 @@ def boutiques():
         
         
         elif choix_boutiques == 2:
+            main_menu()
             a_rendre_madame_guipure = int(input("Bonjour et bienvenu chez Madame Guipure, quelle somme dois-je vous rendre ? "))
             madame_guipure(a_rendre_madame_guipure)
         
@@ -232,6 +282,7 @@ def boutiques():
         
         
         else:
+            main_menu()
             a_rendre_galions = int(input("Bonjour et bienvenu chez Ollivander, combien de Galions dois-je te rendre ? "))
             a_rendre_mornilles = int(input("Maintenant, combien de Mornilles te dois-je ? "))
             a_rendre_noises = int(input("Finallement, combien de petite Noises te faut-il ? "))
@@ -244,8 +295,8 @@ boutiques()
 
 
 
-import pygame
-import sys
+
+
 
 
 pygame.init()
@@ -297,51 +348,7 @@ class Button():
         else:
             self.text = self.font.render(self.text_input, True, self.base_color)
 
-def main_menu():
-    current_background = pygame.image.load("La-Malle-main/images/1302546 (1).jpg")
 
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-
-        SCREEN.blit(current_background, (0, 0))
-
-        MENU_MOUSE_POS = pygame.mouse.get_pos()
-
-        MENU_TEXT = get_font(100).render("MAIN MENU", True, "#b68f40")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
-
-        PLAY_BUTTON = Button(image=pygame.image.load("La-Malle-main/images/play-button_482059.png"), pos=(640, 250),
-                             text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        OPTIONS_BUTTON = Button(image=pygame.image.load("La-Malle-main/images/settings_3524636.png"), pos=(640, 400),
-                                text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("La-Malle-main/images/logout_1828427.png"), pos=(640, 550),
-                             text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-
-        SCREEN.blit(MENU_TEXT, MENU_RECT)
-
-        for button in [PLAY_BUTTON, OPTIONS_BUTTON, QUIT_BUTTON]:
-            button.changeColor(MENU_MOUSE_POS)
-            button.update(SCREEN)
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                sys.exit()
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                if PLAY_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    current_background = pygame.image.load("path/to/play/background.jpg")
-                    play()
-                elif OPTIONS_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    current_background = pygame.image.load("path/to/options/background.jpg")
-                    options()
-                elif QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
-                    pygame.quit()
-                    sys.exit()
-
-        pygame.display.update()
 
 
     
