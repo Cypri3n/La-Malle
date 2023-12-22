@@ -2,9 +2,13 @@
 '''
 HARRY POTTER SE FAIT LA MALLE
 
-REGLES:
-CLASSEMENT ET CSV:
-Les données tirés de l'univers d'Harry Potter sont importés du fichier CSV
+Harry Potter découvre le Chemin de Traverse et part à la conquête des nombreuses boutiques magiques caractéristiques du Chemin de Traverse. Pendant son périple, Harry pourra entrer dans les trois boutiques suivantes :
+
+Chez Fleury et Botts
+Chez Madame Guipure
+Chez Ollivander
+Vos achats se feront depuis la console, et le programme déterminera la somme à rendre.
+
 BONUS:
 
 AUTEURS:
