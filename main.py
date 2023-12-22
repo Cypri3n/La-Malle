@@ -11,9 +11,9 @@ Eliot CAIMARI LAUNAY, Arthur CHARUEL, Cyprien VENARD
 LICENCE:
 Aucune
 VERSION:
-1.1
+2.1
 DATE DE DERNIERE REVISION:
-24/11/2023
+20/12/2023
 ADRESSE GITHUB: 
 https://github.com/Cypri3n/La-Malle
 '''
@@ -26,7 +26,7 @@ from random import randint
 
 
 
-def fleury_et_bott(a_rendre):
+def fleury_et_bott(a_rendre_fleury_et_bott):
     '''
     Fonction permettant de rendre la monnaie à Harry avec le moins de billets
     possibles en sachant que la caisse du libraire est infini.
@@ -58,21 +58,25 @@ def fleury_et_bott(a_rendre):
                     2 : 0,
                     1 : 0}
     
-    print(f"Bonjour Harry, je vous dois {a_rendre} euros.")
+    print(f"Bonjour Harry, je vais dès à présent vous rendre {a_rendre_fleury_et_bott} euros.")
     
     
     for billet in dico_billets:
-        if a_rendre >= billet:
-            nb_billets = a_rendre // billet
+        if a_rendre_fleury_et_bott >= billet:
+            nb_billets = a_rendre_fleury_et_bott // billet
             dico_billets[billet] = nb_billets
-            a_rendre -= nb_billets * billet
-            
+            a_rendre_fleury_et_bott -= nb_billets * billet
+
+    for j in dico_billets:
+        if dico_billets[j] >= 1:
+            print(f"Je vous dois {dico_billets[j]} billet(s) de {dico_billets[j]}")
+
     return dico_billets
 
 
 
 
-def madame_guipure(a_rendre):
+def madame_guipure(a_rendre_madame_guipure):
     '''
     Fonction permettant de rendre la monnaie à Harry avec le moins de billets
     possibles en sachant que la caisse du libraire est finie.
@@ -95,31 +99,45 @@ def madame_guipure(a_rendre):
     >>> madame_guipure(842)
     '''
     caisse = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
-    rendu_monnaie_1 = {}
+    rendu_monnaie = {}
 
-    print(f"Bonjour Harry, je vous dois {a_rendre} euros.")
+    print(f"Bonjour Harry, je vous dois {a_rendre_madame_guipure} euros.")
 
     for coupure in caisse:
-        if coupure <= a_rendre and caisse[coupure] > 0:
-            nb_coupures = min(a_rendre // coupure, caisse[coupure])
-            rendu_monnaie_1[coupure] = nb_coupures
-            a_rendre -= nb_coupures * coupure
+        if coupure <= a_rendre_madame_guipure and caisse[coupure] > 0:
+            nb_coupures = min(a_rendre_madame_guipure // coupure, caisse[coupure])
+            rendu_monnaie[coupure] = nb_coupures
+            a_rendre_madame_guipure -= nb_coupures * coupure
             caisse[coupure] -= nb_coupures
-            
-    if a_rendre > 0:
-        print("Je ne peux pas vous remboursez totalement, mais je vous verse le contenu de ma caisse.")
-        rendu_monnaie_2 = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
+
+        if a_rendre_madame_guipure > 0:
+            if all(value == 0 for value in caisse.values()):
+                rendu_monnaie = {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}
+            else:
+                '''
+                while a_rendre_madame_guipure > 0:
+                    if caisse[coupure] > 0:
+                        if a_rendre_madame_guipure % caisse[coupure] == 1:
+                            nb_coupures = min(a_rendre // coupure, caisse[coupure])
+                            rendu_monnaie[coupure] = nb_coupures
+                            a_rendre_madame_guipure -= nb_coupures * coupure
+                            caisse[coupure] -= nb_coupures
+                        else:
+                '''
+
+    if a_rendre_madame_guipure > 0:
+        if rendu_monnaie == {200: 1, 100: 3, 50: 1, 20: 1, 10: 1, 5: 1, 2: 5}:
+            print("Je ne peux pas vous rembourser totalement, mais je vous verse le contenu de ma caisse.")
+        else:
+            print("Désolé, je ne peux pas te rendre correctement la monnaie, je te donne donc un peu plus")
     else:
         print("Je peux donc vous rendre la monnaie.")
-        rendu_monnaie_2 = rendu_monnaie_1
-    
-    
-    return rendu_monnaie_2            
+              
+    return rendu_monnaie           
 
 
 
-
-def ollivander():
+def ollivander(a_rendre_gallions, a_rendre_mornilles, a_rendre_noises):
     '''
     Fonction permettant de rendre la monnaie à Harry avec le moins de billets
     possibles en sachant que la caisse du libraire est finie et de convetir des monnaies de differentes devises.
@@ -141,23 +159,27 @@ def ollivander():
 
     >>> madame_guipure(842)
     '''
-    noises = 451
-    mornilles = 531
-    gallions = 7
-    # convertions
-    prix = (mornilles * 29) + (gallions * 17 * 29) + noises
-    monnaie_Akhy = 5 * 17 * 29
-    print(f"La baguette de sureau t'as choisi Akhy, c'est génial, d'atant plus que tu me dois {gallions} gallions,
-        {mornilles} mornilles ainsi que {noises} petites noises, ce qui fait {prix} noises très exactement")
-    a_rendre = monnaie_Akhy - prix
+    
+    
+    dico_billets = {493 : 0, 29 : 0, 1 : 0}
+    dico_billets[493] = a_rendre_gallions
+    dico_billets[29] = a_rendre_mornilles
+    dico_billets[1] = a_rendre_noises
+    for i in dico_billets:
+        while dico_billets[1] >= 29:
+            dico_billets[29] += 1 
+            dico_billets[1] -= 29
+        while dico_billets[29] >= 17:
+            dico_billets[493] += 1
+            dico_billets[29] -= 17            
+    print(f"Je te rends {dico_billets[493]} Gallions, {dico_billets[29]} Mornilles, et {dico_billets[1]} Noises !")
+    return dico_billets
 
 
 
 
 #   PARTIE 2 : Interface homme machine 
 
-
-#Pas optimal mes gatés vu que la phrase est trop précise, mieux vaut avoir des valeurs pour chaque boutique et en plus ca marche pas 
 def boutiques():
     '''
     Fonction qui demande à l'utilisateur quelle boutique il souhaite visiter, puis affiche les fonctions de ces boutiques.'
@@ -166,6 +188,7 @@ def boutiques():
     Sorties : Redirige le joueur vers une autre fonction
               Renvoie le résultat lié a cette dernière (documentés separemment)  
     '''
+    
     liste_boutiques = ['Chez Fleury et Bott', 'chez fleury et bott', 'Chez Madame Guipure', 'chez madame guipure', 'Chez Ollivander']
     print(liste_boutiques[2])
     choix_boutiques = input("Dans quelle boutique souhaitez vous aller? ")
@@ -173,11 +196,16 @@ def boutiques():
     assert choix_boutiques in liste_boutiques, "Veuillez saisir une boutiques existante"
 
     if choix_boutiques == liste_boutiques[0] or choix_boutiques == liste_boutiques[1]:
-        fleury_et_bott()
+        a_rendre_fleury_et_bott = int(input("Bonjour et bienvenu chez Fleury et Bott, quelle somme dois-je vous rendre ? "))
+        fleury_et_bott(a_rendre_fleury_et_bott)
     elif choix_boutiques == liste_boutiques[2] or choix_boutiques == liste_boutiques[3]:
-        madame_guipure()
+        a_rendre_madame_guipure = int(input("Bonjour et bienvenu chez Madame Guipure, quelle somme dois-je vous rendre ? "))
+        madame_guipure(a_rendre_madame_guipure)
     else:
-        ollivander()
+        a_rendre_galions = int(input("Bonjour et bienvenu chez Ollivander, combien de Galions dois-je te rendre ? "))
+        a_rendre_mornilles = int(input("Maintenant, combien de Mornilles te dois-je ? "))
+        a_rendre_noises = int(input("Finallement, combien de petite Noises te faut-il ? "))
+        ollivander(a_rendre_galions, a_rendre_mornilles, a_rendre_noises)
 
 boutiques()
 
