@@ -69,7 +69,7 @@ def fleury_et_bott(a_rendre_fleury_et_bott):
 
     for j in dico_billets:
         if dico_billets[j] >= 1:
-            print(f"Je vous dois {dico_billets[j]} billet(s) de {dico_billets[j]}")
+            print(f"Je vous dois {dico_billets[j]} billet(s) de {j}")
 
     return dico_billets
 
