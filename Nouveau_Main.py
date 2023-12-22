@@ -1,9 +1,13 @@
 # coding utf-8:
 '''
-HARRY POTTER SE FAIT LA MALLE
+HARRY POTTER SE FAIT LA MALLE...
+Harry Potter découvre le Chemin de Traverse et part à la conquête des nombreuses boutiques magiques 
+caractéristiques du Chemin de Traverse. Pendant son périple, Harry pourra entrer dans les trois boutiques suivantes :
 
-REGLES: Ce programme en python permet de simuler la visite d'Harry Potter au chemin de traverse.
-Il permet de visiter plusieurs boutiques et de calculer l'argent à rendre à Harry lors de ses achats. 
+Chez Fleury et Botts
+Chez Madame Guipure
+Chez Ollivander
+Vos achats se feront depuis la console, et le programme déterminera la somme à rendre.
 
 AUTEURS:
 Eliot CAIMARI LAUNAY, Arthur CHARUEL, Cyprien VENARD
@@ -30,7 +34,7 @@ def fleury_et_bott(a_rendre_fleury_et_bott):
 
     DOCTEST:
     >>> fleury_et_bott(0)
-    
+        
     >>> fleury_et_bott(60)
   
     >>> fleury_et_bott(63)
