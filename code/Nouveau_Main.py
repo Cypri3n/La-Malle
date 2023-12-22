@@ -32,18 +32,18 @@ def main_menu():
                 pygame.quit()
                 sys.exit()
 
-        SCREEN.blit(current_background, (0, 0))
+        SCREEN.blit(pygame.transform.scale(current_background, (SCREEN_WIDTH, SCREEN_HEIGHT)), (0, 0))
 
         MENU_MOUSE_POS = pygame.mouse.get_pos()
 
         MENU_TEXT = get_font(100).render("MAIN MENU", True, "#b68f40")
-        MENU_RECT = MENU_TEXT.get_rect(center=(640, 100))
+        MENU_RECT = MENU_TEXT.get_rect(center=(SCREEN_WIDTH // 2, 100))
 
-        PLAY_BUTTON = Button(image=pygame.image.load("images/jouer.png"), pos=(640, 250),
+        PLAY_BUTTON = Button(image=pygame.image.load("images/jouer.png"), pos=(SCREEN_WIDTH // 2, 250),
                              text_input="PLAY", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        OPTIONS_BUTTON = Button(image=pygame.image.load("images/settingsbleu.png"), pos=(640, 400),
+        OPTIONS_BUTTON = Button(image=pygame.image.load("images/settingsbleu.png"), pos=(SCREEN_WIDTH // 2, 400),
                                 text_input="OPTIONS", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
-        QUIT_BUTTON = Button(image=pygame.image.load("images/logout_1828490.png"), pos=(640, 550),
+        QUIT_BUTTON = Button(image=pygame.image.load("images/logout_1828490.png"), pos=(SCREEN_WIDTH // 2, 550),
                              text_input="QUIT", font=get_font(75), base_color="#d7fcd4", hovering_color="White")
 
         SCREEN.blit(MENU_TEXT, MENU_RECT)
@@ -66,6 +66,9 @@ def main_menu():
                 elif QUIT_BUTTON.checkForInput(MENU_MOUSE_POS):
                     pygame.quit()
                     sys.exit()
+
+        pygame.display.update()
+
 
         pygame.display.update()
 pygame.init()
