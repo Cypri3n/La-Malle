@@ -2,16 +2,21 @@
 '''
 HARRY POTTER SE FAIT LA MALLE
 
-REGLES: Ce programme en python permet de simuler la visite d'Harry Potter au chemin de traverse.
-Il permet de visiter plusieurs boutiques et de calculer l'argent à rendre à Harry lors de ses achats. 
+Harry Potter découvre le Chemin de Traverse et part à la conquête des nombreuses boutiques magiques caractéristiques du Chemin de Traverse. Pendant son périple, Harry pourra entrer dans les trois boutiques suivantes :
+
+Chez Fleury et Botts
+Chez Madame Guipure
+Chez Ollivander
+Vos achats se feront depuis la console, et le programme déterminera la somme à rendre.
+
+BONUS:
 
 AUTEURS:
-Eliot CAIMARI LAUNAY, Arthur CHARUEL, Cyprien VENARD
-
+Eliot CAIMARI LAUNAY, Arthur CHARUEL, Cyprien VENARD 
 LICENCE:
 Aucune
 VERSION:
-3.1
+Finale, après 73 commits quand même
 DATE DE DERNIERE REVISION:
 22/12/2023
 ADRESSE GITHUB: 
